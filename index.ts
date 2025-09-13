@@ -190,13 +190,13 @@ export default async function geminiYes({
         .map((e) => removeControlCharacters(e as string))
         .map((e) => e.replaceAll('\r', '')) // remove carriage return
         .forEach(async (e) => {
-          if (e.match(/❯ 1. Yes/)) return await confirm();
-          if (e.match(/❯ 1. Dark mode✔|Press Enter to continue…/))
-            return await confirm();
-          if (e.match(/No conversation found to continue/)) {
-            errorNoConversation = true; // set flag to true if error message is found
-            return;
-          }
+          if (e.match(/● 1. Yes/)) return await confirm();
+          // if (e.match(/❯ 1. Dark mode✔|Press Enter to continue…/))
+          //   return await confirm();
+          // if (e.match(/No conversation found to continue/)) {
+          //   errorNoConversation = true; // set flag to true if error message is found
+          //   return;
+          // }
         })
         // .forEach(e => appendFile('.cache/io.log', "output|" + JSON.stringify(e) + '\n')) // for debugging
         .run()
